@@ -2,6 +2,7 @@ package com.udhayakumart.android.scoreboard.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,9 +18,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun OverCard() {
     Card(modifier = Modifier
-        .fillMaxWidth()
-        .height(250.dp)
-        .padding(16.dp), colors = CardDefaults.cardColors(
+        .fillMaxWidth(), colors = CardDefaults.cardColors(
         MaterialTheme.colorScheme.primaryContainer
     )
     ) {

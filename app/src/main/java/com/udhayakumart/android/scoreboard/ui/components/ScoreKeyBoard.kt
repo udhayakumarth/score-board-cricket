@@ -1,67 +1,100 @@
 package com.udhayakumart.android.scoreboard.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row                                                              
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun ScoreKeyBoard(){
+    val buttonSpacing = 8.dp
     Row( modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween)  {
-        Button(onClick = { }, Modifier.height(90.dp).weight(1f).padding(16.dp)) {
-            Text("Undo")
+        horizontalArrangement = Arrangement.spacedBy(16.dp))  {
+
+        ScoreButton(symbol = "Undo",color = MaterialTheme.colorScheme.secondaryContainer,textColor = MaterialTheme.colorScheme.onSecondaryContainer,
+            modifier = Modifier
+                .aspectRatio(2.5f)
+                .weight(2f)) {
+
         }
-        Button(onClick = { },Modifier.height(90.dp).weight(1f).padding(16.dp)) {
-            Text("Next Over")
+        ScoreButton(symbol = "Next Over",color = MaterialTheme.colorScheme.secondaryContainer,textColor = MaterialTheme.colorScheme.onSecondaryContainer,
+            modifier = Modifier
+                .aspectRatio(2.5f)
+                .weight(2f)) {
+
         }
     }
     Row( modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween)  {
-        Button(onClick = { }, Modifier.height(90.dp).width(80.dp).weight(1f).padding(12.dp)
-        ) {
-            Text("0")
+        horizontalArrangement = Arrangement.spacedBy(16.dp))  {
+        ScoreButton(symbol = "0",color = MaterialTheme.colorScheme.surfaceVariant,textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .weight(1f)) {
+
         }
-        Button(onClick = { },Modifier.height(90.dp).weight(1f).padding(12.dp)) {
-            Text("1")
+        ScoreButton(symbol = "1",color = MaterialTheme.colorScheme.surfaceVariant,textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .weight(1f)) {
+
         }
-        Button(onClick = { }, Modifier.height(90.dp).weight(1f).padding(12.dp)) {
-            Text("2")
+        ScoreButton(symbol = "2",color = MaterialTheme.colorScheme.surfaceVariant,textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .weight(1f)) {
+
         }
-        Button(onClick = { },Modifier.height(90.dp).weight(1f).padding(12.dp)) {
-            Text("3")
-        }
-    }
-    Row( modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween)  {
-        Button(onClick = { }, Modifier.height(90.dp).width(80.dp).weight(1f).padding(12.dp)
-        ) {
-            Text("4")
-        }
-        Button(onClick = { },Modifier.height(90.dp).weight(1f).padding(12.dp)) {
-            Text("6")
-        }
-        Button(onClick = { }, Modifier.height(90.dp).weight(1f).padding(12.dp)) {
-            Text("W")
-        }
-        Button(onClick = { },Modifier.height(90.dp).weight(1f).padding(12.dp)) {
-            Text("+")
+        ScoreButton(symbol = "3",color = MaterialTheme.colorScheme.surfaceVariant,textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .weight(1f)) {
+
         }
     }
     Row( modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween)  {
-        Button(onClick = { }, Modifier.height(90.dp).weight(1f).padding(16.dp)) {
-            Text("Wide")
+        horizontalArrangement = Arrangement.spacedBy(16.dp))  {
+        ScoreButton(symbol = "4",color = MaterialTheme.colorScheme.surfaceVariant,textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .weight(1f)) {
+
         }
-        Button(onClick = { },Modifier.height(90.dp).weight(1f).padding(16.dp)) {
-            Text("No Ball")
+        ScoreButton(symbol = "6",color = MaterialTheme.colorScheme.surfaceVariant,textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .weight(1f)) {
+
+        }
+        ScoreButton(symbol = "W",color = MaterialTheme.colorScheme.tertiaryContainer,textColor = MaterialTheme.colorScheme.onTertiaryContainer,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .weight(1f)) {
+
+        }
+        ScoreButton(symbol = "+",color = MaterialTheme.colorScheme.surfaceVariant,textColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier
+                .aspectRatio(1f)
+                .weight(1f)) {
+
+        }
+    }
+    Row( modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(16.dp))  {
+        ScoreButton(symbol = "Wide",color = MaterialTheme.colorScheme.secondaryContainer,textColor = MaterialTheme.colorScheme.onSecondaryContainer,
+            modifier = Modifier
+                .aspectRatio(2.5f)
+                .weight(2f)) {
+
+        }
+        ScoreButton(symbol = "No Ball",color = MaterialTheme.colorScheme.secondaryContainer,textColor = MaterialTheme.colorScheme.onSecondaryContainer,
+            modifier = Modifier
+                .aspectRatio(2.5f)
+                .weight(2f)) {
+
         }
     }
 }

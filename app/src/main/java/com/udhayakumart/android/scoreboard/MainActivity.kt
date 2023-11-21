@@ -7,10 +7,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.udhayakumart.android.scoreboard.ui.components.MainLayout
+import androidx.room.Room
+import com.udhayakumart.android.scoreboard.data.source.local.ScoreDatabase
 import com.udhayakumart.android.scoreboard.ui.theme.ScoreBoardTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val db by lazy {
+        Room.databaseBuilder(
+            applicationContext,
+            ScoreDatabase::class.java, "ScoreDatabase"
+        ).build()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -20,13 +29,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainLayout()
+
+                    ScoreBoardScreen()
                 }
             }
         }
     }
 
 }
+
 
 
 

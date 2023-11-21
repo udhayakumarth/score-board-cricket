@@ -1,8 +1,15 @@
-package com.udhayakumart.android.scoreboard.ui.components
+package com.udhayakumart.android.scoreboard
 
 import android.widget.Toast
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Divider
@@ -21,16 +28,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.udhayakumart.android.scoreboard.ui.components.MainScore
+import com.udhayakumart.android.scoreboard.ui.components.OverCard
+import com.udhayakumart.android.scoreboard.ui.components.ScoreKeyBoard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainLayout() {
+fun ScoreBoardScreen() {
     var mDisplayMenu by remember { mutableStateOf(false) }
-
     // fetching local context
     val mContext = LocalContext.current
 
@@ -38,8 +47,8 @@ fun MainLayout() {
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground,
                 ),
                 title = {
                     Text("Score Board")
@@ -62,11 +71,32 @@ fun MainLayout() {
         },
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
-            MainScore()
-            Divider()
-            OverCard()
-            Divider()
-            ScoreKeyBoard()
+
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background)
+                    .padding(16.dp)
+            ) {
+                Column (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .align(Alignment.BottomCenter),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    MainScore()
+                    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)){
+                        items(items = listOf(1,2,3,4), itemContent = {
+                            OverCard()
+                        })
+                    }
+                    Divider()
+                    ScoreKeyBoard()
+                }
+
+            }
+
         }
     }
 }
