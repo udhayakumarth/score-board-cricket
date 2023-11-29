@@ -2,14 +2,17 @@ package com.udhayakumart.android.scoreboard
 
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Divider
@@ -30,6 +33,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.udhayakumart.android.scoreboard.ui.components.MainScore
@@ -47,15 +51,15 @@ fun ScoreBoardScreen() {
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = MaterialTheme.colorScheme.onBackground,
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
                 ),
                 title = {
                     Text("Score Board")
                 },
                 actions = {
                     IconButton(onClick = { mDisplayMenu = !mDisplayMenu }) {
-                        Icon(Icons.Default.MoreVert, "")
+                        Icon(Icons.Default.MoreVert, "", tint = MaterialTheme.colorScheme.onPrimary)
                     }
 
                     DropdownMenu(
@@ -70,14 +74,10 @@ fun ScoreBoardScreen() {
             )
         },
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
-
-
+        Column(modifier = Modifier.padding(innerPadding).background(MaterialTheme.colorScheme.inverseOnSurface)) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background)
-                    .padding(16.dp)
             ) {
                 Column (
                     modifier = Modifier
@@ -85,14 +85,24 @@ fun ScoreBoardScreen() {
                         .align(Alignment.BottomCenter),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    MainScore()
-                    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)){
-                        items(items = listOf(1,2,3,4), itemContent = {
-                            OverCard()
-                        })
+                    Row {
+                        Column(modifier = Modifier.background(MaterialTheme.colorScheme.inverseOnSurface)
+                            .padding(16.dp),verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                            MainScore()
+                            LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)){
+                                items(items = listOf(1,2,3,4), itemContent = {
+                                    OverCard()
+                                })
+                            }
+                        }
                     }
-                    Divider()
-                    ScoreKeyBoard()
+                    Row(modifier = Modifier.background(MaterialTheme.colorScheme.surface)
+                    ) {
+                        Column(modifier = Modifier.background(MaterialTheme.colorScheme.surface)
+                            .padding(16.dp),verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                            ScoreKeyBoard()
+                        }
+                    }
                 }
 
             }
@@ -100,3 +110,4 @@ fun ScoreBoardScreen() {
         }
     }
 }
+
